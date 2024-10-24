@@ -1,0 +1,41 @@
+# Use Fedora as base image
+FROM fedora:latest
+
+# Update the system and install required packages
+RUN dnf -y update && \
+    dnf -y install nano tar gcc make java-11-openjdk curl openssh openssh-server openssh-clients hostname
+
+# Create the directory structure
+RUN mkdir -p /root/user/apps
+
+# Download Hadoop and extract it to the /root/user/apps folder
+RUN curl -O https://downloads.apache.org/hadoop/common/hadoop-3.3.6/hadoop-3.3.6.tar.gz && \
+    tar -xvzf hadoop-3.3.6.tar.gz -C /root/user/apps && \
+    rm hadoop-3.3.6.tar.gz
+
+# Create symbolic link for Hadoop
+RUN ln -s /root/user/apps/hadoop-3.3.6 /root/user/apps/hadoop
+
+# Remove password from root
+RUN passwd -d root
+
+# Example to copy a file into the container (from local system to container)
+# COPY <local_path> <container_path>
+# Uncomment and adjust the following line to copy a file into the container
+# COPY ./example-file.txt /root/user/apps/example-file.txt
+
+# Example to change a file's content inside the container
+# Uncomment and adjust the following line to append text to a file
+# RUN echo "Example content" >> /root/user/apps/example-file.txt
+
+# Copy the scripts into the container
+COPY scripts/ /root/scripts/
+
+# Make the scripts executable
+RUN chmod +x /root/scripts/*
+
+# Set the working directory
+WORKDIR /root
+
+# Run the script when the container starts
+CMD ["/bin/bash"]
