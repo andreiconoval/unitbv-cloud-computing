@@ -30,6 +30,7 @@ RUN passwd -d root
 
 # Copy the scripts into the container
 COPY scripts/ /root/scripts/
+COPY content/content/ /root/user/lab2/content/
 
 # Make the scripts executable
 RUN chmod +x /root/scripts/*

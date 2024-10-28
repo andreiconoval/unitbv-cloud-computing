@@ -1,0 +1,11 @@
+version: '3'
+services:
+  hadoop:
+    image: fedora-hadoop-lab2
+    container_name: fedora-hadoop-container-lab2
+    ports:
+      - "9000:9000"    # NameNode IPC (fs.defaultFS)
+      - "9870:9870"    # NameNode Web UI
+      - "9864:9864"    # DataNode Web UI
+      - "9866:9866"    # DataNode Data Transfer
+      - "9867:9867"    # DataNode IPC

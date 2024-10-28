@@ -1,0 +1,48 @@
+# Use Fedora as base image
+FROM fedora:latest
+
+# Update the system and install required packages
+RUN dnf -y update && \
+    dnf -y install nano tar gcc make java-11-openjdk curl openssh openssh-server openssh-clients hostname maven python3
+
+# Add user and set passwordless sudo for the user
+RUN useradd -m -s /bin/bash user && \
+    echo "user ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+
+# Set the home environment variable for the new user
+ENV HOME /home/user
+
+# Create the directory structure under the new user's home directory
+RUN mkdir -p /home/user/apps
+
+# Download Hadoop and extract it to the /home/user/apps folder
+RUN curl -O https://downloads.apache.org/hadoop/common/hadoop-3.3.6/hadoop-3.3.6.tar.gz && \
+    tar -xvzf hadoop-3.3.6.tar.gz -C /home/user/apps && \
+    rm hadoop-3.3.6.tar.gz
+
+# Create symbolic link for Hadoop
+RUN ln -s /home/user/apps/hadoop-3.3.6 /home/user/apps/hadoop
+
+# Remove password from root and user to disable root and user login
+RUN passwd -d root
+RUN passwd -d user
+
+# Copy the scripts into the container under /home/user/scripts
+COPY scripts/ /home/user/scripts/
+COPY content/ /home/user/lab2/content/
+
+# Make the scripts executable
+RUN chmod +x /home/user/scripts/*
+RUN sudo chown -R user:user /home/user/apps/hadoop
+
+# Set ownership of all files to the 'user'
+RUN chown -R user:user /home/user
+
+# Set the working directory to the new user's home directory
+WORKDIR /home/user
+
+# Switch to the 'user'
+USER user
+
+# Run the script when the container starts
+CMD ["/bin/bash"]
