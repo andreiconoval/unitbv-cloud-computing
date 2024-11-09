@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import sys
 
@@ -15,9 +15,8 @@ for line in sys.stdin:
     # if the value is not a number, discard line
     continue
 
-  c = d.get(word)
-  c = 0 if c == None else c
+  c = d.get(word, 0)
   d[word] = c + count
 
-for (k, v) in d.items():
-  print '%s %s' % (k, v)
+for k, v in d.items():
+  print(f'{k} {v}')

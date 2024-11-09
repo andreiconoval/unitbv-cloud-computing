@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import sys
 import re
@@ -6,4 +6,4 @@ import re
 # read input from stdin, line by line
 for line in sys.stdin:
   words = line.split()
-  print ' '.join(words)
+  print(' '.join(words))

@@ -1,9 +1,9 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import sys
 
-max = int(sys.argv[1])
-maxWord = None
+max_count = int(sys.argv[1])
+max_word = None
 
 for line in sys.stdin:
   if len(line) == 0:
@@ -19,8 +19,8 @@ for line in sys.stdin:
     # if the value is not a number, discard line
     continue
 
-  if count > max:
-    max = count
-    maxWord = word
+  if count > max_count:
+    max_count = count
+    max_word = word
 
-print '%s %d' % (maxWord, max)
+print(f'{max_word} {max_count}')
