@@ -1,0 +1,4 @@
+net/examples/Maximum$MaximumMapper.class
+net/examples/Maximum$TokenizerMapper.class
+net/examples/Maximum$IntSumReducer.class
+net/examples/Maximum.class
