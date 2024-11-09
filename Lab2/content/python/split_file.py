@@ -22,7 +22,7 @@ def imparte_in_blocuri(nume_fisier, numar_blocuri):
 
     # Scrie fiecare bloc într-un fișier nou
     for index, bloc in enumerate(blocuri):
-        with open(f"bloc_{index + 1}.txt", 'w') as f:
+        with open(f"bloc_{numar_blocuri}_{index + 1}.txt", 'w') as f:
             f.writelines(bloc)
 
 # Exemplu de utilizare: numele fișierului și numărul de blocuri specificat

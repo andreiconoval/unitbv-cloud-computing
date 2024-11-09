@@ -1,0 +1,6 @@
+net/examples/WordCountU.class
+net/examples/WordCount$TokenizerMapper.class
+net/examples/WordCount$IntSumReducer.class
+net/examples/WordCountU$IntSumReducer.class
+net/examples/WordCountU$TokenizerMapper.class
+net/examples/WordCount.class
