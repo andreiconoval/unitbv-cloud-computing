@@ -1,7 +1,7 @@
 version: '3'
 services:
   hadoop:
-    image: fedora-hadoop-lab2
+    image: fedora-hadoop-lab2                 # Specify the existing image name
     container_name: fedora-hadoop-container-lab2
     ports:
       - "9000:9000"    # NameNode IPC (fs.defaultFS)
@@ -9,3 +9,8 @@ services:
       - "9864:9864"    # DataNode Web UI
       - "9866:9866"    # DataNode Data Transfer
       - "9867:9867"    # DataNode IPC
+    volumes:
+      - ./hadoop-config:/etc/hadoop      # Optional: Mount configuration files if needed
+    environment:
+      - HDFS_NAMENODE_USER=root
+      - HDFS_DATANODE_USER=root
