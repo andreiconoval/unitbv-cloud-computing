@@ -15,3 +15,6 @@ hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-*.jar \
     -input q4_output/tf/ -output q4_output/tfidf \
     -mapper tfidf_mapper.py -reducer NONE \
     -files q4_output/df/part-00000 
+
+
+    cat ../text/Dumas-TheBorgias.txt | python3 tf_mapper.py | python3 tf_reducer.py | python3 df_mapper.py | python3 df_reducer.py | python3 tfidf_mapper.py 
