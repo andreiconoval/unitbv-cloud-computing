@@ -18,3 +18,7 @@ hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-*.jar \
 
 
     cat ../text/Dumas-TheBorgias.txt | python3 tf_mapper.py | python3 tf_reducer.py | python3 df_mapper.py | python3 df_reducer.py | python3 tfidf_mapper.py 
+
+
+
+    hadoop jar target/Maximum-1.0-SNAPSHOT.jar net.examples.TFIDF  dumas/  q4j_output_tf/ q4j_output_df/ q4j_output_tf_idf/

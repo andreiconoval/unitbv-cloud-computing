@@ -1,2 +1,9 @@
 /home/user/apps/unitbv-cloud-computing/Lab3/content/Maximum/src/main/java/net/examples/MaximumU.java
+/home/user/apps/unitbv-cloud-computing/Lab3/content/Maximum/src/main/java/net/examples/DFReducer.java
+/home/user/apps/unitbv-cloud-computing/Lab3/content/Maximum/src/main/java/net/examples/TFIDFMapper.java
 /home/user/apps/unitbv-cloud-computing/Lab3/content/Maximum/src/main/java/net/examples/Maximum.java
+/home/user/apps/unitbv-cloud-computing/Lab3/content/Maximum/src/main/java/net/examples/DFMapper.java
+/home/user/apps/unitbv-cloud-computing/Lab3/content/Maximum/src/main/java/net/examples/TFIDF.java
+/home/user/apps/unitbv-cloud-computing/Lab3/content/Maximum/src/main/java/net/examples/TFMapper.java
+/home/user/apps/unitbv-cloud-computing/Lab3/content/Maximum/src/main/java/net/examples/TFIDFReducer.java
+/home/user/apps/unitbv-cloud-computing/Lab3/content/Maximum/src/main/java/net/examples/TFReducer.java
