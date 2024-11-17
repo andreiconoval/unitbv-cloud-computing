@@ -1,24 +1,25 @@
+#!/usr/bin/env python3
 import sys
 from collections import defaultdict
 
-# Dictionary to store unique words and their counts per document
-document_words = defaultdict(dict)
-# Dictionary to store total word count per document
-document_total_count = defaultdict(int)
+# Dictionaries to store totals and individual word counts
+total_counts = defaultdict(int)
+word_counts = defaultdict(dict)
 
-# Process each line from the input
+# Process input from the mapper
 for line in sys.stdin:
-    document_id, word, count = line.strip().split("@", 2)
-    count = int(count)
+    try:
+        key, count = line.strip().rsplit(" ", 1)
+        count = int(count)
+    except ValueError:
+        continue  # Skip malformed lines
     
-    # Add word count to the document's total word count
-    document_total_count[document_id] += count
-    
-    # Store the word count for each unique word in the document
-    document_words[document_id][word] = count
+    document_id, word = key.split("@", 1)
+    total_counts[document_id] += count
+    word_counts[document_id][word] = count
 
-# Output in the desired format
-for document_id, words in document_words.items():
-    total_words = document_total_count[document_id]
+# Output the results in the desired format
+for document_id, words in word_counts.items():
+    total_words = total_counts[document_id]
     for word, count in words.items():
-        print(f"{document_id}@{total_words}@{word}@{count}")
+        print(f"{document_id}@{total_words}@{word} {count}")

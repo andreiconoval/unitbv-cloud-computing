@@ -5,8 +5,8 @@ import os
 from collections import Counter
 
 # Get the filename from the Hadoop environment variable
-document_path = os.getenv("mapreduce_map_input_file", "Dumas-TheBorgias.txt")
-document_id = os.path.basename(document_path) # Extract just the filename
+document_path = os.environ["mapreduce_map_input_file"]
+document_id = document_path.split('/')[-1] # Extract just the filename
 
 
 all_text = ""
